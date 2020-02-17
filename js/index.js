@@ -154,4 +154,38 @@
  window.addEventListener("scroll", () => {
    bottomPage.style.backgroundImage = "linear-gradient(blue,blue)";
  });
- 
+ //STOP-PROPAGATION  EXAMPLE-1
+
+document.querySelectorAll(".destination").forEach(div => {
+    div.addEventListener("click", () => {
+      div.style.backgroundColor = "#f5d6c1";
+    });
+  });
+  
+  document.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      console.log("I clicked on the button");
+      event.stopPropagation();
+    });
+  });
+  
+  
+   //stop-propagation EXAMPLE-2
+  
+   const test1 = document.querySelector('.text-content p').addEventListener('click', () => {
+    event.target.style.color = 'green'
+    event.stopPropagation()
+  })
+  
+  const test2 = document.querySelector('.text-content').addEventListener('click', () => {
+   event.target.style.backgroundColor = 'grey'
+  })
+  
+   // PREVENT DEFAULT
+  
+  const stop = document.querySelectorAll(".nav a");
+  stop.forEach(event => {
+    event.addEventListener("click", event => {
+    event.preventDefault();
+    });
+  });
